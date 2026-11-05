@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amor 💗</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #2b101c, #6b263e, #301421);
+  color: #fff5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 430px;
+  padding: 30px 22px;
+  border: 1px solid #ffffff35;
+  border-radius: 25px;
+  background: #ffffff0d;
+  box-shadow: 0 10px 40px #0003;
+}
+
+.heart {
+  font-size: 42px;
+  animation: latir 1.5s infinite;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #ffe3eb;
+}
+
+button {
+  background: #f6c3d3;
+  color: #4b192d;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 24px;
+  font-size: 16px;
+  margin-top: 18px;
+  cursor: pointer;
+}
+
+.screen {
+  display: none;
+  animation: aparecer 0.7s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+.photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 15px 0;
+}
+
+.small {
+  font-size: 13px;
+  color: #f5c9d7;
+}
+
+@keyframes latir {
+  50% { transform: scale(1.15); }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<section class="screen active" id="inicio">
+  <div class="heart">♡</div>
+  <p>Una pequeña sorpresa para ti...</p>
+  <h1>Para mi amor</h1>
+  <p>He preparado algo bonito<br>solo para nosotros 💗</p>
+  <button onclick="mostrar('recuerdo')">Abrir mi sorpresa ♡</button>
+</section>
+
+<section class="screen" id="recuerdo">
+  <div class="heart">♥</div>
+  <h1>Un pedacito de nosotros</h1>
+  <img src="foto.jpg" class="photo" alt="Nuestro recuerdo">
+  <p>Aunque estemos lejos,<br>hay momentos que siempre<br>me hacen sentir cerquita de ti.</p>
+  <button onclick="mostrar('mensaje')">Continuar 💗</button>
+</section>
+
+<section class="screen" id="mensaje">
+  <div class="heart">♡</div>
+  <h1>Solo quería decirte...</h1>
+  <p>Gracias por ser tú,<br>por todo lo que haces<br>y por formar parte de mi vida.</p>
+  <p>Te quiero muchísimo,<br>incluso desde tan lejos. 🇪🇸♡🇵🇪</p>
+  <button onclick="mostrar('final')">Una última cosita...</button>
+</section>
+
+<section class="screen" id="final">
+  <div class="heart">💗</div>
+  <h1>Te quiero, mi amor</h1>
+  <p>Esta distancia no cambia<br>lo bonito que siento por ti.</p>
+  <p>Ojalá pudiera darte<br>un abrazo ahora mismo.</p>
+  <p class="small">Hecho con mucho cariño, para ti.</p>
+  <button onclick="mostrar('inicio')">Volver a empezar ♡</button>
+</section>
+
+</div>
+
+<script>
+function mostrar(id) {
+  document.querySelectorAll(".screen").forEach(function(pantalla) {
+    pantalla.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
