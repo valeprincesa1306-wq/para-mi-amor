@@ -226,7 +226,7 @@
 </head>
 
 <body>
-
+<audio id="musica" src="audiop.mpeg" preload="auto" loop></audio>
   <!-- PRIMERA PANTALLA: REGALO -->
 
   <section class="portada" id="portada">
@@ -355,6 +355,11 @@
       recuerdos.classList.add("aparecer");
 
       mostrarFoto();
+
+      const musica = document.getElementById("musica");
+      musica.play().catch(error => {
+        console.log("No se pudo reproducir el audio", error);
+      });
 
       window.scrollTo({
         top: 0,
