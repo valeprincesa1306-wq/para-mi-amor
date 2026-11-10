@@ -15,11 +15,78 @@
       margin: 0;
       min-height: 100vh;
       font-family: Georgia, serif;
-      background: linear-gradient(135deg, #fff0f5, #ffe1eb, #fff8fb);
+      background: linear-gradient(135deg, #f8e8c8, #f3d9b5, #fff5e5);
       color: #7b354f;
       text-align: center;
       padding: 25px 15px;
     }
+
+    /* PORTADA DEL REGALO */
+
+    .portada {
+      max-width: 600px;
+      min-height: 85vh;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.82);
+      border: 2px solid #d6b36a;
+      border-radius: 28px;
+      box-shadow: 0 10px 35px rgba(130, 75, 35, 0.15);
+    }
+
+    .portada h1 {
+      color: #8b2635;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    .portada p {
+      color: #7b354f;
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 10px 0 20px;
+    }
+
+    .imagen-regalo {
+      width: 100%;
+      max-width: 380px;
+      max-height: 390px;
+      object-fit: contain;
+      border-radius: 20px;
+      margin: 10px auto;
+    }
+
+    .boton-regalo {
+      margin-top: 20px;
+      padding: 15px 32px;
+      border: 2px solid #b58a3c;
+      border-radius: 35px;
+      background: linear-gradient(135deg, #e4c477, #c99b48);
+      color: #7b2635;
+      font-size: 17px;
+      font-weight: bold;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(130, 75, 35, 0.15);
+      transition: 0.3s;
+    }
+
+    .boton-regalo:hover {
+      transform: translateY(-3px);
+      background: #e8cc91;
+    }
+
+    .decoracion {
+      color: #b58a3c;
+      font-size: 25px;
+      margin: 10px;
+    }
+
+    /* PAGINA DE RECUERDOS */
 
     .contenedor {
       max-width: 600px;
@@ -79,7 +146,7 @@
       margin: 20px 0;
     }
 
-    button {
+    .botones button {
       border: none;
       border-radius: 30px;
       padding: 12px 22px;
@@ -91,7 +158,7 @@
       transition: 0.2s;
     }
 
-    button:hover {
+    .botones button:hover {
       background: #bd5d83;
       transform: translateY(-2px);
     }
@@ -108,24 +175,50 @@
       color: #b34d73;
     }
 
+    /* OCULTAR LA GALERIA HASTA ABRIR EL REGALO */
+
+    .oculto {
+      display: none;
+    }
+
+    .aparecer {
+      animation: aparecer 0.8s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 480px) {
       body {
         padding: 15px 10px;
+      }
+
+      .portada {
+        padding: 25px 12px;
+      }
+
+      .portada h1 {
+        font-size: 27px;
       }
 
       .contenedor {
         padding: 22px 12px;
       }
 
-      h1 {
-        font-size: 26px;
-      }
-
       .foto-marco {
         height: 350px;
       }
 
-      button {
+      .botones button {
         padding: 11px 18px;
       }
     }
@@ -134,7 +227,43 @@
 
 <body>
 
-  <main class="contenedor">
+  <!-- PRIMERA PANTALLA: REGALO -->
+
+  <section class="portada" id="portada">
+
+    <div class="decoracion">♡ ✨ ♡</div>
+
+    <h1>Un regalito para ti</h1>
+
+    <p>
+      Tengo algo preparado para ti,
+      <br>
+      mi amor ❤️
+    </p>
+
+    <img
+      class="imagen-regalo"
+      src="34.jpeg"
+      alt="Un regalito especial"
+    >
+
+    <p>
+      Un pequeño recuerdo de nosotros,
+      aunque estemos lejos.
+    </p>
+
+    <button class="boton-regalo" onclick="abrirRegalo()">
+      🎁 Abre aquí ❤️
+    </button>
+
+    <div class="decoracion">♡</div>
+
+  </section>
+
+
+  <!-- PAGINA ORIGINAL DE RECUERDOS -->
+
+  <main class="contenedor oculto" id="recuerdos">
 
     <div class="corazon">♡</div>
 
@@ -168,56 +297,87 @@
 
   </main>
 
+
   <script>
-const fotos = [
-  "1 .jpeg",
-  "2.jpeg",
-  "3.jpeg",
-  "4.jpeg",
-  "5.jpeg",
-  "6.jpeg",
-  "7.jpeg",
-  "8.jpeg",
-  "9.jpeg",
-  "10.jpeg",
-  "11.jpeg",
-  "12.jpeg",
-  "13.jpeg",
-  "14.jpeg",
-  "15.jpeg",
-  "16.jpeg",
-  "17.jpeg",
-  "18.jpeg",
-  "19.jpeg",
-  "20.jpeg",
-  "21.jpeg",
-  "22.jpeg",
-  "23.jpeg",
-  "24.jpeg",
-  "25.jpeg",
-  "26.jpeg",
-  "27.jpeg",
-  "28.jpeg",
-  "29.jpeg",
-  "30.jpeg",
-  "31.jpeg",
-  "32.jpeg",
-  "33.jpeg"
-];
+
+    // FOTOS EN EL ORDEN QUE ORGANIZASTE
+
+    const fotos = [
+      "1 .jpeg",
+      "2.jpeg",
+      "3.jpeg",
+      "4.jpeg",
+      "5.jpeg",
+      "6.jpeg",
+      "7.jpeg",
+      "8.jpeg",
+      "9.jpeg",
+      "10.jpeg",
+      "11.jpeg",
+      "12.jpeg",
+      "13.jpeg",
+      "14.jpeg",
+      "15.jpeg",
+      "16.jpeg",
+      "17.jpeg",
+      "18.jpeg",
+      "19.jpeg",
+      "20.jpeg",
+      "21.jpeg",
+      "22.jpeg",
+      "23.jpeg",
+      "24.jpeg",
+      "25.jpeg",
+      "26.jpeg",
+      "27.jpeg",
+      "28.jpeg",
+      "29.jpeg",
+      "30.jpeg",
+      "31.jpeg",
+      "32.jpeg",
+      "33.jpeg"
+    ];
 
     let actual = 0;
 
     const imagen = document.getElementById("foto");
     const contador = document.getElementById("contador");
 
+    // ABRIR EL REGALO
+
+    function abrirRegalo() {
+
+      const portada = document.getElementById("portada");
+      const recuerdos = document.getElementById("recuerdos");
+
+      portada.style.display = "none";
+
+      recuerdos.classList.remove("oculto");
+      recuerdos.classList.add("aparecer");
+
+      mostrarFoto();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    // MOSTRAR FOTO
+
     function mostrarFoto() {
+
       imagen.src = fotos[actual];
 
       contador.textContent =
         "Recuerdo " + (actual + 1) + " de " + fotos.length;
+
     }
 
+    // FOTO SIGUIENTE
+
     function siguiente() {
+
       actual++;
 
       if (actual >= fotos.length) {
@@ -225,9 +385,13 @@ const fotos = [
       }
 
       mostrarFoto();
+
     }
 
+    // FOTO ANTERIOR
+
     function anterior() {
+
       actual--;
 
       if (actual < 0) {
@@ -235,9 +399,9 @@ const fotos = [
       }
 
       mostrarFoto();
+
     }
 
-    mostrarFoto();
   </script>
 
 </body>
